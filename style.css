@@ -31,10 +31,32 @@ i {
 	margin: 5px 10px;
 }
 
+.fa-hand-rock {
+	transform: rotate(90deg);
+}
+
 #game-area {
 	display: flex;
+	flex-direction: column;
 	width: 300px;
-	height: 100px;
+	height: 150px;
 	align-items: center;
 	justify-content: center;
+}
+
+.played-icons {
+	display: flex;
+	align-items: center;
+	margin-top: 10px;
+	margin-bottom: auto;
+}
+
+#score-board {
+	display: flex;
+	align-content: flex-end;
+	margin-top: auto;
+}
+
+#score-board > div {
+	margin: 10px 10px;
 }
