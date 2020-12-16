@@ -62,6 +62,10 @@ button:focus {
 	pointer-events: none;
 }
 
+.fa-hand-rock {
+	transform: rotate(90deg);
+}
+
 #rps-icons > i {
 	height: 100%;
 	width: 70px;
@@ -74,9 +78,7 @@ i {
 	margin: 5px 10px;
 	color: #f5c33a;
 }
-.fa-hand-rock {
-	transform: rotate(90deg);
-}
+
 .fa-hand-scissors {
 	transform: scaleX(-1);
 }
