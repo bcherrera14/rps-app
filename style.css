@@ -12,7 +12,7 @@ html body {
 }
 .card {
 	width: 400px;
-	margin-top: 50px;
+	margin-top: 3%;
 	min-height: 40%;
 	margin-bottom: auto;
 	display: flex;
@@ -72,8 +72,7 @@ button:focus {
 }
 i {
 	margin: 5px 10px;
-	color: #f1c27d;
-	border-color: #2c5364;
+	color: #f5c33a;
 }
 .fa-hand-rock {
 	transform: rotate(90deg);
