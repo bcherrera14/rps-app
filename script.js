@@ -18,16 +18,16 @@ let draws = document.getElementById('draw').firstElementChild;
 draws.innerHTML = score.draw;
 let winMessage = 'You Win!';
 let lossMessage = 'Computer Wins!';
-let drawMessage = 'It"s a Draw!';
+let drawMessage = "It's a Draw!";
 let gameResult = document.getElementById('result');
-gameResult.style.visibility = 'hidden';
+//gameResult.style.visibility = 'hidden';
 let scoreTable = document.getElementById('score-board');
 scoreTable.style.visibility = 'hidden';
 
 let smallIcon = 'fa-2x';
 let largeIcon = 'fa-3x';
 let computerOptions = Object.keys(gameOptions);
-let gameArea = document.getElementById('game-area');
+//let gameArea = document.getElementById('game-area');
 let playerShowSelection = document.getElementById('player-show-selection');
 let computerShowSelection = document.getElementById('computer-show-selection');
 
@@ -43,16 +43,21 @@ let computerSelection = '';
 //Hide play button at start
 let playButton = document.getElementById('play-button');
 playButton.style.visibility = 'hidden';
+let replayButton = document.getElementById('replay-button');
+replayButton.style.display = 'none';
 //Hide vs
-let versus = document.getElementsByClassName('played-icons')[0].children[1];
-//console.log(versus);
-versus.style.visibility = 'hidden';
+// let versus = document.getElementsByClassName('played-icons')[0].children[1];
+// //console.log(versus);
+// versus.style.visibility = 'hidden';
+let gameArea = document.getElementById('game-area');
+gameArea.style.visibility = 'hidden';
 
 //Store user selection
 function userSelect(e) {
 	if (e.target.classList.contains('fas')) {
 		playerSelection = e.target.id;
 		playButton.style.visibility = 'visible';
+		playButton.style.display = 'inline';
 		handleIconSize();
 		e.target.classList.remove(smallIcon);
 		e.target.className += ' ' + largeIcon;
@@ -97,18 +102,22 @@ function computerSelect() {
 }
 
 function playGame() {
+	gameArea.style.visibility = 'visible';
 	playerShowSelection.innerHTML = gameOptions[playerSelection];
-	versus.style.visibility = 'visible';
+	//versus.style.visibility = 'visible';
 	scoreTable.style.visibility = 'visible';
 	computerSelect();
 	chooseWinner();
+	replayButton.style.display = 'inline';
+	playButton.style.display = 'none';
+	playerOptions.removeEventListener('click', userSelect);
 }
 
 function chooseWinner() {
 	if (computerSelection === playerSelection) {
 		//alert('draw');
 		score.draw += 1;
-		gameResult.style.visibility = 'visible';
+		//gameResult.style.visibility = 'visible';
 		gameResult.innerHTML = drawMessage;
 		console.log(score);
 	} else if (computerSelection === 'rock') {
@@ -116,13 +125,13 @@ function chooseWinner() {
 		if (playerSelection === 'paper') {
 			//alert('You win!');
 			score.win += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = winMessage;
 			console.log(score);
 		} else {
 			//alert('Computer wins with rock!');
 			score.loss += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = lossMessage;
 			console.log(score);
 		}
@@ -131,13 +140,13 @@ function chooseWinner() {
 		if (playerSelection === 'scissors') {
 			//alert('You win!');
 			score.win += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = winMessage;
 			console.log(score);
 		} else {
 			//alert('Computer wins with paper!');
 			score.loss += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = lossMessage;
 			console.log(score);
 		}
@@ -146,13 +155,13 @@ function chooseWinner() {
 		if (playerSelection === 'rock') {
 			//alert('You win!');
 			score.win += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = winMessage;
 			console.log(score);
 		} else {
 			//alert('Computer wins with scissors!');
 			score.loss += 1;
-			gameResult.style.visibility = 'visible';
+			//gameResult.style.visibility = 'visible';
 			gameResult.innerHTML = lossMessage;
 			console.log(score);
 		}
@@ -167,12 +176,16 @@ function updateScoreBoard() {
 	draws.innerHTML = score.draw;
 }
 
-function resetGame() {
+function replayGame() {
 	playButton.style.visibility = 'hidden';
-	versus.style.visibility = 'hidden';
-	gameResult.style.visibility = 'hidden';
-	playerShowSelection.innerHTML = '';
-	computerShowSelection.innerHTML = '';
+	playButton.style.display = 'inline';
+	gameArea.style.visibility = 'hidden';
+	//versus.style.visibility = 'hidden';
+	//gameResult.style.visibility = 'hidden';
+	replayButton.style.display = 'none';
+	//playerShowSelection.innerHTML = '';
+	//computerShowSelection.innerHTML = '';
+	playerOptions.addEventListener('click', userSelect);
 	if (handRock.classList.contains(largeIcon)) {
 		handRock.classList.remove(largeIcon);
 		handRock.className += ' ' + smallIcon;
