@@ -38,7 +38,8 @@ let handScissors = document.getElementById('scissors');
 
 let playerSelection = '';
 let computerSelection = '';
-//Hide play button at start
+
+//Hide play area at start
 let playButton = document.getElementById('play-button');
 playButton.style.visibility = 'hidden';
 let replayButton = document.getElementById('replay-button');
@@ -97,14 +98,14 @@ function computerSelect() {
 function playGame() {
 	playerOptions.className = 'noHover';
 	setTimeout(function() {
+		computerSelect();
 		gameArea.style.visibility = 'visible';
 		playerShowSelection.innerHTML = gameOptions[playerSelection];
 		scoreTable.style.visibility = 'visible';
-		computerSelect();
-		chooseWinner();
 		replayButton.style.display = 'inline';
 		playButton.style.display = 'none';
 		playerOptions.removeEventListener('click', userSelect);
+		chooseWinner();
 	}, 500);
 }
 
