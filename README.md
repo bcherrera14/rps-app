@@ -4,7 +4,7 @@
 
 Play it [here](https://bcherrera14.github.io/rps-app/)
 
-![RPS Game Image](RpsGame.png)
+![RPS Game Image](RpsGame.PNG)
 
 ## Summary
 
